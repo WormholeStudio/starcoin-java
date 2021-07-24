@@ -8,8 +8,8 @@ import lombok.Getter;
 public enum ChainInfo {
 
 
-//  MAIN("main", "", 1),
-  BARNARD("barnard", "https://barnard-seed.starcoin.org", 251);
+  BARNARD("barnard", "https://barnard-seed.starcoin.org", 251),
+  MAIN("main", "https://main-seed.starcoin.org", 1);
   private String name;
   private String url;
   private int chainId;

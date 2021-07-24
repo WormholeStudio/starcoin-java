@@ -28,7 +28,7 @@ public class StarcoinClientTest {
 
   @Test
   public void testSequenceNumber() {
-    System.out.println(starcoinClient.getAccountResource(sender).sequence_number);
+    System.out.println(starcoinClient.getAccountResource(sender).get().sequence_number);
   }
 
 
@@ -147,6 +147,9 @@ public class StarcoinClientTest {
     String toAddress = "0xd7f20befd34b9f1ab8aeae98b82a5a51";
     TypeObj typeObj = TypeObj.STC();
     String rst = starcoinClient.transfer(sender, privateKey, AccountAddressUtils.create(toAddress),
+        typeObj, new BigInteger("1000"));
+    System.out.println(rst);
+    rst = starcoinClient.transfer(sender, privateKey, AccountAddressUtils.create(toAddress),
         typeObj, new BigInteger("1000"));
     System.out.println(rst);
   }
