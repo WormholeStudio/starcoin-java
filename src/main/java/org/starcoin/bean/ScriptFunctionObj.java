@@ -17,7 +17,7 @@ import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
 @Data
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 public class ScriptFunctionObj extends ModuleObj {
 
 
@@ -31,7 +31,6 @@ public class ScriptFunctionObj extends ModuleObj {
   }
 
   public ScriptFunction toScriptFunction() {
-
 
     List<TypeTag> tyAargsTypeTag = Lists.newArrayList();
     if (tyArgs != null) {

@@ -19,9 +19,9 @@ import org.starcoin.types.Ed25519PrivateKey;
 
 public class StarcoinClientTest {
 
-  private StarcoinClient starcoinClient = new StarcoinClient(ChainInfo.BARNARD);
-  private String address = "0xf8af03dd08de49d81e4efd9e24c039cc";
-  private String privateKeyString = "0x7899f7cac425b5ce7239eb313db06ac2a93c731ea4512b857f975c0447176b25";
+  private StarcoinClient starcoinClient = new StarcoinClient(ChainInfo.MAIN);
+  private String address = "0xb987F1aB0D7879b2aB421b98f96eFb44";
+  private String privateKeyString = "ce3a624dbba2a19baa8a82e6e57141d479254c578e3b011b8a42674d83033631";
   private Ed25519PrivateKey privateKey = SignatureUtils.strToPrivateKey(privateKeyString);
   private AccountAddress sender = AccountAddressUtils.create(address);
 
@@ -144,14 +144,18 @@ public class StarcoinClientTest {
   @SneakyThrows
   @Test
   public void testTransfer() {
-    String toAddress = "0xd7f20befd34b9f1ab8aeae98b82a5a51";
-    TypeObj typeObj = TypeObj.STC();
+    String toAddress = "0xAbe64EBfc1b141a7beF02107fdC717F3";
+    TypeObj typeObj = TypeObj.builder()
+        .moduleAddress("0xb987F1aB0D7879b2aB421b98f96eFb44")
+        .moduleName("Doge")
+        .name("SHIBA")
+        .build();
     String rst = starcoinClient.transfer(sender, privateKey, AccountAddressUtils.create(toAddress),
-        typeObj, new BigInteger("1000"));
+        typeObj, new BigInteger("6666000000000"));
     System.out.println(rst);
-    rst = starcoinClient.transfer(sender, privateKey, AccountAddressUtils.create(toAddress),
-        typeObj, new BigInteger("1000"));
-    System.out.println(rst);
+//    rst = starcoinClient.transfer(sender, privateKey, AccountAddressUtils.create(toAddress),
+//        typeObj, new BigInteger("1000"));
+//    System.out.println(rst);
   }
 
 
